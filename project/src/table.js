@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { onValue, ref } from 'firebase/database';
-import { db } from '../config';
+import { db } from './config';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 export default function Table() {

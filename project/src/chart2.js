@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
 import { get, ref } from 'firebase/database';
-import { db } from '../config';
+import { db } from './config';
 
 const chartConfig = {
   backgroundColor: 'transparent',
@@ -15,29 +15,28 @@ const chartConfig = {
   },
 };
 
-
-const PieGraph = () => {
-  const [varietyData, setVarietyData] = useState([]);
+const RipenessGraph = () => {
+  const [ripenessData, setRipenessData] = useState([]);
 
   useEffect(() => {
     const usersRef = ref(db);
     get(usersRef).then((snapshot) => {
       if (snapshot.exists()) {
         const usersArray = Object.values(snapshot.val());
-        const varietyCounts = usersArray.reduce((acc, user) => {
-          acc[user.variety] = (acc[user.variety] || 0) + 1;
+        const ripenessCounts = usersArray.reduce((acc, user) => {
+          acc[user.ripeness] = (acc[user.ripeness] || 0) + 1;
           return acc;
         }, {});
 
-        const formattedData = Object.keys(varietyCounts).map((variety, index) => ({
-          name: variety,
-          population: varietyCounts[variety],
+        const formattedData = Object.keys(ripenessCounts).map((ripeness, index) => ({
+          name: ripeness,
+          population: ripenessCounts[ripeness],
           color: getColor(index),
           legendFontColor: 'white',
           legendFontSize: 15,
         }));
 
-        setVarietyData(formattedData);
+        setRipenessData(formattedData);
       } else {
         console.log('No data available');
       }
@@ -54,20 +53,20 @@ const PieGraph = () => {
   return (
     <View style={styles.container}>
       <PieChart
-        data={varietyData}
+        data={ripenessData}
         width={500}
         height={420}
         chartConfig={chartConfig}
         accessor={'population'}
         backgroundColor={'transparent'}
-        paddingLeft={'70'}
+        paddingLeft={'90'}
         absolute
       />
     </View>
   );
 };
 
-export default PieGraph;
+export default RipenessGraph;
 
 const styles = StyleSheet.create({
   container: {

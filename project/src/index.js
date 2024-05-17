@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Picker, Button, StyleSheet, Text, Pressable } from 'react-native';
-import { db } from '../config.js';
+import { db } from './config.js';
 import { ref, push, set } from 'firebase/database';
 import moment from 'moment';
 

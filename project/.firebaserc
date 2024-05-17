@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "software-design-8c7f4",
+    "deploy": "software-design-8c7f4"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

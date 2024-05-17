@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground } from 'react-native'
-import RipenessGraph from './component/chart'
-import VarietyGraph from './component/chart2'
-import AddData from './src'
-import Table from './component/table'
+import RipenessGraph from './chart'
+import VarietyGraph from './chart2'
+import AddData from './index'
+import Table from './table'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
